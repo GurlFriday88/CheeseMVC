@@ -20,7 +20,7 @@ namespace CheeseMVC.Controllers
             cheeses.Add("Cheddar");
             cheeses.Add("Brie");
             cheeses.Add("Munster");
-            ViewBag.cheeses = cheeses;
+            ViewBag.cheeses = cheeses; //add cheeses list to viewbag object in order to pass data to the view
             return View();
         }
     }
