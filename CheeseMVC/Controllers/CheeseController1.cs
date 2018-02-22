@@ -10,18 +10,31 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
+        //initalize a new empty list for the cheeses that will be dynamically added 
+        static private List<string> Cheeses = new List<string>();
+
+
         // GET: /<controller>/
         public IActionResult Index()
         {
-            //initalize an empty list to hold my cheeses
-            List<string> cheeses = new List<string>();
-            //add some test cheeses to the list to pass into the view bag
-            cheeses.Add("Gouda");
-            cheeses.Add("Cheddar");
-            cheeses.Add("Brie");
-            cheeses.Add("Munster");
-            ViewBag.cheeses = cheeses; //add cheeses list to viewbag object in order to pass data to the view
+
+            ViewBag.cheeses = Cheeses;
+           
             return View();
+        }
+
+        public IActionResult Add()
+        {
+
+            return View();
+        }
+
+
+        public IActionResult NewCheese(string name)
+        {
+
+
+            return Redirect("Index");
         }
     }
 }
