@@ -4,3 +4,14 @@
 }
 
 <h1>My Cheeses</h1>
+
+@* make ul list to print to browser passing in the cheeses contained in viewbag.cheeses *@
+@* On each iteration in the foreach loop one cheese in the cheeses list will be added to a li tag. *@
+
+<ul>
+    @foreach (string cheese in ViewBag.cheeses)
+    {
+        <li>@cheese</li>
+    }
+
+</ul>
