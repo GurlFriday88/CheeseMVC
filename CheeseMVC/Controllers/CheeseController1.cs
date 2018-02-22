@@ -13,13 +13,15 @@ namespace CheeseMVC.Controllers
         //initalize a new empty list for the cheeses that will be dynamically added 
         static private List<string> Cheeses = new List<string>();
 
+        //class property names are always capatilized 
+
 
         // GET: /<controller>/
         public IActionResult Index() //home page showing list of cheeses that have been added
         {
 
             ViewBag.cheeses = Cheeses;
-           
+
             return View();
         }
 
@@ -29,7 +31,8 @@ namespace CheeseMVC.Controllers
             return View();
         }
 
-
+        [HttpPost]
+        [Route("/Cheese/Add")] // route attribute adds the NewCheese action method to the same action method as the add form 
         public IActionResult NewCheese(string name) //parameter accepting cheese form input
         {
             //takes cheeses that were passed in from form post req and adds it to class property cheese list 
@@ -38,7 +41,7 @@ namespace CheeseMVC.Controllers
             ViewBag.cheeses = Cheeses;
             //adds the list to the viewbag to be passed to the redirected Index view for iteration into li tags
 
-            return Redirect("Index");
+            return Redirect("/Cheese"); //redirects back to the home page showing the list of cheeses
         }
     }
 }

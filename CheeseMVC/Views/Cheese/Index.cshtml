@@ -1,13 +1,17 @@
 ﻿
 @{
-    
+
 }
 
 <h1>My Cheeses</h1>
 
-<p><a asp-controller="Cheese" asp-action="Add" >Click to add some cheese</a></p>
+<p><a asp-controller="Cheese" asp-action="Add">Click to add some cheese</a></p>
 
-@if (ViewBag.cheeses.Count = 0)
+
+ @*if conditional that checks the cheeses list stored in viewbag.
+ If the number of cheeses in the list is equal to 0 then generate a message stating there are no cheeses*@
+
+@if (ViewBag.cheeses.Count == 0)
 {
 
     <p>No cheeses yet!</p>
