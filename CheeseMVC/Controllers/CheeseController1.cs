@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,8 @@ namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-        //initalize a new empty list for the cheeses that will be dynamically added 
-        static private List<string> Cheeses = new List<string>();
+        //initalize a new empty list of dictionaries for the cheeses that will be dynamically added 
+        static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
 
         //class property names are always capatilized 
 
@@ -33,11 +34,12 @@ namespace CheeseMVC.Controllers
 
         [HttpPost]
         [Route("/Cheese/Add")] // route attribute adds the NewCheese action method to the same action method as the add form 
-        public IActionResult NewCheese(string name) //parameter accepting cheese form input
+        public IActionResult NewCheese(string name, string description) //parameter accepting cheese form input
         {
             //takes cheeses that were passed in from form post req and adds it to class property cheese list 
-            Cheeses.Add(name);
+            Cheeses.Add(name, description);
 
+            
             ViewBag.cheeses = Cheeses;
             //adds the list to the viewbag to be passed to the redirected Index view for iteration into li tags
 

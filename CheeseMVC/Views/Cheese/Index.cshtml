@@ -21,9 +21,11 @@
 @* On each iteration in the foreach loop one cheese in the cheeses list will be added to a li tag. *@
 
 <ul>
-    @foreach (string cheese in ViewBag.cheeses)
-    {
-        <li>@cheese</li>
-    }
+    
+     @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+      {
+            <li> @string.Format("Name: {0}   Description: {1} ",  cheese.Key, cheese.Value)</li>
+      }
 
+    
 </ul>
