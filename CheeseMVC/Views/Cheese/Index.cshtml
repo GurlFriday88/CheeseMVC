@@ -5,27 +5,39 @@
 
 <h1>My Cheeses</h1>
 
+<p>@ViewBag.confirmationMessage</p>
+
 <p><a asp-controller="Cheese" asp-action="Add">Click to add some cheese</a></p>
 
 
- @*if conditional that checks the cheeses list stored in viewbag.
- If the number of cheeses in the list is equal to 0 then generate a message stating there are no cheeses*@
+@*if conditional that checks the cheeses list stored in viewbag.
+    If the number of cheeses in the list is equal to 0 then generate a message stating there are no cheeses*@
+
+
+@* make ul list to print to browser passing in the cheeses contained in viewbag.cheeses *@
+@* On each iteration in the foreach loop one cheese in the cheeses list will be added to a li tag. *@
+
+<ul>
+
+    @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+    {
+        <li>@string.Format("Name: {0}   Description: {1} ", cheese.Key, cheese.Value)</li>
+    }
+
+
+</ul>
+<br />
+<hr />
 
 @if (ViewBag.cheeses.Count == 0)
 {
 
     <p>No cheeses yet!</p>
 }
+else
+{
+    <p>Tired of a cheese ? <a asp-controller="Cheese" asp-action="Delete"> Delete it</a></p>
+}
 
-@* make ul list to print to browser passing in the cheeses contained in viewbag.cheeses *@
-@* On each iteration in the foreach loop one cheese in the cheeses list will be added to a li tag. *@
 
-<ul>
-    
-     @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
-      {
-            <li> @string.Format("Name: {0}   Description: {1} ",  cheese.Key, cheese.Value)</li>
-      }
 
-    
-</ul>

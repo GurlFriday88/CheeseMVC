@@ -29,8 +29,17 @@ namespace CheeseMVC.Controllers
         public IActionResult Add() //action method that routes to the add cheese form 
         {
 
+
             return View();
         }
+
+        public IActionResult Delete()// action method tht shows form to delete cheese
+        {
+            ViewBag.cheeses = Cheeses;
+
+            return View();
+        } 
+
 
         [HttpPost]
         [Route("/Cheese/Add")] // route attribute adds the NewCheese action method to the same action method as the add form 
@@ -45,5 +54,30 @@ namespace CheeseMVC.Controllers
 
             return Redirect("/Cheese"); //redirects back to the home page showing the list of cheeses
         }
+
+        [HttpPost]
+        [Route("/Cheese/Delete")]
+        public IActionResult DeleteCheese(string cheese)
+        {
+            string ConfirmationMessage= "";
+
+            if (Cheeses.ContainsKey(cheese))
+            {
+                Cheeses.Remove(cheese);
+                ConfirmationMessage = "Selection has been successfuly deleted";
+
+            }
+            else
+            {
+
+               ConfirmationMessage = "Please select a cheese to delete";
+
+            }
+
+            
+            ViewBag.confirmationMessage = ConfirmationMessage;
+            return Redirect("/Cheese");
+        }
+
     }
 }
