@@ -5,7 +5,7 @@
 
 <h1>My Cheeses</h1>
 
-<p>@ViewBag.confirmationMessage</p>
+<p>@TempData["ConfirmationMessage"]</p>
 
 <p><a asp-controller="Cheese" asp-action="Add">Click to add some cheese</a></p>
 
