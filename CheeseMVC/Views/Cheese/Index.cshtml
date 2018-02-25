@@ -17,15 +17,38 @@
 @* make ul list to print to browser passing in the cheeses contained in viewbag.cheeses *@
 @* On each iteration in the foreach loop one cheese in the cheeses list will be added to a li tag. *@
 
-<ul>
+@*<ul>
 
-    @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
-    {
-        <li>@string.Format("Name: {0}   Description: {1} ", cheese.Key, cheese.Value)</li>
-    }
+        @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+        {
+            <li>@string.Format("Name: {0}   Description: {1} ", cheese.Key, cheese.Value)</li>
+        }
 
 
-</ul>
+    </ul>*@
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+            {
+                <td>@string.Format(" {0} ", cheese.Key, cheese.Value)</td>
+                <td>@string.Format(" {1} ", cheese.Key, cheese.Value)</td>
+            }
+
+        </tr>
+
+    </tbody>
+</table>
 <br />
 <hr />
 
